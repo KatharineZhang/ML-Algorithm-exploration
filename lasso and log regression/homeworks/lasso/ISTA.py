@@ -6,7 +6,6 @@ import numpy as np
 from utils import problem
 
 
-@problem.tag("hw2-A")
 def step(
     X: np.ndarray, y: np.ndarray, weight: np.ndarray, bias: float, _lambda: float, step_size: float
 ) -> Tuple[np.ndarray, float]:
@@ -47,7 +46,6 @@ def step(
      
 
 
-@problem.tag("hw2-A")
 def loss(
     X: np.ndarray, y: np.ndarray, weight: np.ndarray, bias: float, _lambda: float
 ) -> float:
@@ -70,14 +68,13 @@ def loss(
 
     # I'm missing the bias variable...
 
-    # add bias within (y_i - x_i.transpose * weight)^2, ASK WHY ON ED
+    # add bias within (y_i - x_i.transpose * weight)^2
     loss = np.linalg.norm(y - (X @ weight + bias))**2 + _lambda * np.linalg.norm(weight, ord=1)
     return loss
     
 
 
 
-@problem.tag("hw2-A", start_line=5)
 def train(
     X: np.ndarray,
     y: np.ndarray,
@@ -143,8 +140,6 @@ def train(
     
     return weight, bias
 
-
-@problem.tag("hw2-A")
 def convergence_criterion(
     weight: np.ndarray, old_w: np.ndarray, bias: float, old_b: float, convergence_delta: float
 ) -> bool:
@@ -171,7 +166,7 @@ def convergence_criterion(
     
 
 
-@problem.tag("hw2-A")
+
 def main():
     """
     Use all of the functions above to make plots.
